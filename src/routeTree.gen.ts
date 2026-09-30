@@ -13,6 +13,9 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as EnRouteImport } from './routes/en'
 import { Route as EsRouteImport } from './routes/es'
 import { Route as FrRouteImport } from './routes/fr'
+import { Route as EsIndexRouteImport } from './routes/es.index'
+import { Route as EsNosotrosRouteImport } from './routes/es.nosotros'
+import { Route as EsProcesosYCalidadRouteImport } from './routes/es.procesos-y-calidad'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -34,38 +37,76 @@ const FrRoute = FrRouteImport.update({
   path: '/fr',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EsIndexRoute = EsIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => EsRoute,
+} as any)
+const EsNosotrosRoute = EsNosotrosRouteImport.update({
+  id: '/nosotros',
+  path: '/nosotros',
+  getParentRoute: () => EsRoute,
+} as any)
+const EsProcesosYCalidadRoute = EsProcesosYCalidadRouteImport.update({
+  id: '/procesos-y-calidad',
+  path: '/procesos-y-calidad',
+  getParentRoute: () => EsRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/en': typeof EnRoute
-  '/es': typeof EsRoute
+  '/es': typeof EsRouteWithChildren
   '/fr': typeof FrRoute
+  '/es/nosotros': typeof EsNosotrosRoute
+  '/es/procesos-y-calidad': typeof EsProcesosYCalidadRoute
+  '/es/': typeof EsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/en': typeof EnRoute
-  '/es': typeof EsRoute
   '/fr': typeof FrRoute
+  '/es/nosotros': typeof EsNosotrosRoute
+  '/es/procesos-y-calidad': typeof EsProcesosYCalidadRoute
+  '/es': typeof EsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/en': typeof EnRoute
-  '/es': typeof EsRoute
+  '/es': typeof EsRouteWithChildren
   '/fr': typeof FrRoute
+  '/es/nosotros': typeof EsNosotrosRoute
+  '/es/procesos-y-calidad': typeof EsProcesosYCalidadRoute
+  '/es/': typeof EsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/en' | '/es' | '/fr'
+  fullPaths:
+    | '/'
+    | '/en'
+    | '/es'
+    | '/fr'
+    | '/es/nosotros'
+    | '/es/procesos-y-calidad'
+    | '/es/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/en' | '/es' | '/fr'
-  id: '__root__' | '/' | '/en' | '/es' | '/fr'
+  to: '/' | '/en' | '/fr' | '/es/nosotros' | '/es/procesos-y-calidad' | '/es'
+  id:
+    | '__root__'
+    | '/'
+    | '/en'
+    | '/es'
+    | '/fr'
+    | '/es/nosotros'
+    | '/es/procesos-y-calidad'
+    | '/es/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   EnRoute: typeof EnRoute
-  EsRoute: typeof EsRoute
+  EsRoute: typeof EsRouteWithChildren
   FrRoute: typeof FrRoute
 }
 
@@ -99,13 +140,48 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FrRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/es/': {
+      id: '/es/'
+      path: '/'
+      fullPath: '/es/'
+      preLoaderRoute: typeof EsIndexRouteImport
+      parentRoute: typeof EsRoute
+    }
+    '/es/nosotros': {
+      id: '/es/nosotros'
+      path: '/nosotros'
+      fullPath: '/es/nosotros'
+      preLoaderRoute: typeof EsNosotrosRouteImport
+      parentRoute: typeof EsRoute
+    }
+    '/es/procesos-y-calidad': {
+      id: '/es/procesos-y-calidad'
+      path: '/procesos-y-calidad'
+      fullPath: '/es/procesos-y-calidad'
+      preLoaderRoute: typeof EsProcesosYCalidadRouteImport
+      parentRoute: typeof EsRoute
+    }
   }
 }
+
+interface EsRouteChildren {
+  EsNosotrosRoute: typeof EsNosotrosRoute
+  EsProcesosYCalidadRoute: typeof EsProcesosYCalidadRoute
+  EsIndexRoute: typeof EsIndexRoute
+}
+
+const EsRouteChildren: EsRouteChildren = {
+  EsNosotrosRoute: EsNosotrosRoute,
+  EsProcesosYCalidadRoute: EsProcesosYCalidadRoute,
+  EsIndexRoute: EsIndexRoute,
+}
+
+const EsRouteWithChildren = EsRoute._addFileChildren(EsRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   EnRoute: EnRoute,
-  EsRoute: EsRoute,
+  EsRoute: EsRouteWithChildren,
   FrRoute: FrRoute,
 }
 export const routeTree = rootRouteImport
