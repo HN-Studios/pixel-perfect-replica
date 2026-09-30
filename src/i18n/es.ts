@@ -68,7 +68,7 @@ export const es = {
     ],
     aboutTitle: "18 años en el mar, 4 exportando congelado",
     aboutText:
-      "Llevamos más de 18 años trabajando con pescado en Punta de Piedras. Desde hace 4 años procesamos y congelamos nuestro producto para exportarlo al Caribe francés.",
+      "Llevamos más de 18 años trabajando con pescado. Desde hace 4 años procesamos y congelamos nuestro producto para exportarlo al Caribe francés.",
     aboutPoints: [
       "Pesca con cordel y anzuelo, especie por especie",
       "Experiencia exportando a Guadalupe y Martinica",
