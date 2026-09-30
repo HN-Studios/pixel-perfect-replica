@@ -10,33 +10,63 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as EnRouteImport } from './routes/en'
+import { Route as EsRouteImport } from './routes/es'
+import { Route as FrRouteImport } from './routes/fr'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EnRoute = EnRouteImport.update({
+  id: '/en',
+  path: '/en',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EsRoute = EsRouteImport.update({
+  id: '/es',
+  path: '/es',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FrRoute = FrRouteImport.update({
+  id: '/fr',
+  path: '/fr',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/en': typeof EnRoute
+  '/es': typeof EsRoute
+  '/fr': typeof FrRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/en': typeof EnRoute
+  '/es': typeof EsRoute
+  '/fr': typeof FrRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/en': typeof EnRoute
+  '/es': typeof EsRoute
+  '/fr': typeof FrRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/en' | '/es' | '/fr'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/en' | '/es' | '/fr'
+  id: '__root__' | '/' | '/en' | '/es' | '/fr'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  EnRoute: typeof EnRoute
+  EsRoute: typeof EsRoute
+  FrRoute: typeof FrRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +78,35 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/en': {
+      id: '/en'
+      path: '/en'
+      fullPath: '/en'
+      preLoaderRoute: typeof EnRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/es': {
+      id: '/es'
+      path: '/es'
+      fullPath: '/es'
+      preLoaderRoute: typeof EsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/fr': {
+      id: '/fr'
+      path: '/fr'
+      fullPath: '/fr'
+      preLoaderRoute: typeof FrRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  EnRoute: EnRoute,
+  EsRoute: EsRoute,
+  FrRoute: FrRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
