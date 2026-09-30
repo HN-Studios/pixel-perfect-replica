@@ -6,7 +6,7 @@ import { T } from "@/components/site/Pending";
 import { Reveal } from "@/components/site/Reveal";
 import { Section, SectionHeading } from "@/components/site/Section";
 import { ProvisionalPhoto } from "@/components/site/ProvisionalPhoto";
-import heroMar from "@/assets/hero-mar.jpg";
+import heroPlanta from "@/assets/hero-planta.jpg";
 import planta from "@/assets/planta.jpg";
 
 const title = "Exportadora de pescado congelado en Venezuela | Punta de Piedras";
@@ -36,16 +36,13 @@ function HomePage() {
       {/* Hero */}
       <section className="relative isolate flex min-h-[86vh] items-center">
         <img
-          src={heroMar}
-          alt="Barco pesquero en el mar Caribe — foto provisional"
-          width={1920}
-          height={1088}
+          src={heroPlanta}
+          alt="Equipo de la planta procesando pargo rojo fresco"
+          width={1280}
+          height={719}
           className="absolute inset-0 -z-10 h-full w-full object-cover"
         />
         <div className="absolute inset-0 -z-10 bg-gradient-to-r from-primary/95 via-primary/80 to-primary/45" />
-        <span className="absolute right-4 top-4 z-10 rounded-full bg-pending px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wide text-pending-foreground">
-          {es.common.provisionalPhoto}
-        </span>
 
         <div className="container-site pb-40 pt-24 text-primary-foreground md:pb-48">
           <Reveal>
