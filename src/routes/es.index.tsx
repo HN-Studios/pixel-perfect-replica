@@ -5,9 +5,8 @@ import { products, featuredIds, productImage, categoryLabels } from "@/data/prod
 import { T } from "@/components/site/Pending";
 import { Reveal } from "@/components/site/Reveal";
 import { Section, SectionHeading } from "@/components/site/Section";
-import { ProvisionalPhoto } from "@/components/site/ProvisionalPhoto";
 import heroPlanta from "@/assets/hero-planta.jpg";
-import planta from "@/assets/planta.jpg";
+import plantaProceso from "@/assets/planta-proceso.jpg";
 
 const title = "Exportadora de pescado congelado en Venezuela | Punta de Piedras";
 const description =
@@ -172,13 +171,16 @@ function HomePage() {
       <Section>
         <div className="grid items-center gap-12 lg:grid-cols-2">
           <Reveal>
-            <ProvisionalPhoto
-              src={planta}
-              alt="Planta de proceso — foto provisional"
-              width={1280}
-              height={864}
-              className="aspect-4/3"
-            />
+            <div className="aspect-4/3 overflow-hidden rounded-2xl bg-secondary shadow-card">
+              <img
+                src={plantaProceso}
+                alt="Operarios limpiando y clasificando pargo rojo en la planta"
+                width={900}
+                height={675}
+                loading="lazy"
+                className="h-full w-full object-cover"
+              />
+            </div>
           </Reveal>
           <Reveal delay={120}>
             <h2 className="text-3xl font-bold text-primary md:text-4xl">{es.home.aboutTitle}</h2>
