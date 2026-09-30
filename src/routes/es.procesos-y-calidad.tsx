@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Thermometer, ShieldCheck, Truck } from "lucide-react";
+import { Thermometer, ShieldCheck, Truck, Fish } from "lucide-react";
 import { es } from "@/i18n";
 import { T } from "@/components/site/Pending";
 import { Reveal } from "@/components/site/Reveal";
@@ -47,6 +47,21 @@ function QualityPage() {
       </Section>
 
       <Section muted>
+        <SectionHeading title={es.quality.seasonsTitle} subtitle={es.quality.seasonsSubtitle} />
+        <div className="mt-10 grid gap-5 md:grid-cols-3">
+          {es.quality.seasons.map((c, i) => (
+            <Reveal key={c.value} delay={i * 90}>
+              <div className="h-full rounded-2xl bg-card p-7 shadow-soft">
+                <Fish className="size-7 text-accent" />
+                <p className="mt-4 font-display text-2xl font-bold text-primary">{c.value}</p>
+                <p className="mt-1 text-sm text-muted-foreground">{c.label}</p>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </Section>
+
+      <Section>
         <SectionHeading title={es.quality.coldTitle} />
         <div className="mt-10 grid gap-5 md:grid-cols-3">
           {es.quality.cold.map((c, i) => (
@@ -63,9 +78,9 @@ function QualityPage() {
         </div>
       </Section>
 
-      <Section>
+      <Section muted>
         <SectionHeading title={es.quality.certsTitle} />
-        <div className="mt-10 grid gap-5 md:grid-cols-3">
+        <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
           {es.quality.certs.map((c, i) => (
             <Reveal key={c.title} delay={i * 90}>
               <div
@@ -91,7 +106,7 @@ function QualityPage() {
         </div>
       </Section>
 
-      <Section muted>
+      <Section>
         <SectionHeading title={es.quality.logisticsTitle} />
         <div className="mt-10 overflow-hidden rounded-2xl border border-border bg-card shadow-soft">
           {es.quality.logistics.map((l) => (

@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { es } from "@/i18n";
+import { es, company } from "@/i18n";
 import { T } from "./Pending";
 
 export function Footer() {
@@ -55,7 +55,18 @@ export function Footer() {
             {es.contact.info.map((i) => (
               <li key={i.label}>
                 <span className="text-primary-foreground/60">{i.label}: </span>
-                <T>{i.value}</T>
+                {"href" in i && i.href ? (
+                  <a
+                    href={i.href}
+                    target={i.href.startsWith("http") ? "_blank" : undefined}
+                    rel="noopener"
+                    className="break-words hover:text-ice"
+                  >
+                    {i.value}
+                  </a>
+                ) : (
+                  <T>{i.value}</T>
+                )}
               </li>
             ))}
           </ul>
@@ -65,7 +76,7 @@ export function Footer() {
       <div className="border-t border-primary-foreground/10">
         <div className="container-site flex flex-col gap-2 py-6 text-xs text-primary-foreground/60 md:flex-row md:items-center md:justify-between">
           <p>
-            © {new Date().getFullYear()} Procesadora y Congeladora Punta de Piedra ·{" "}
+            © {new Date().getFullYear()} {company.legalName} · RIF {company.rif} ·{" "}
             {es.footer.rights}
           </p>
           <p className="max-w-xl">

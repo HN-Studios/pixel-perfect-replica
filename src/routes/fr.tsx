@@ -3,11 +3,11 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 export const Route = createFileRoute("/fr")({
   head: () => ({
     meta: [
-      { title: "Version française — bientôt disponible | Punta de Piedra" },
+      { title: "Version française — bientôt disponible | Punta de Piedras" },
       {
         name: "description",
         content:
-          "La version française du site de Procesadora y Congeladora Punta de Piedra est en préparation.",
+          "La version française du site de Congeladora y Procesadora Punta de Piedras est en préparation.",
       },
       { name: "robots", content: "noindex, nofollow" },
     ],

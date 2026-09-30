@@ -14,8 +14,10 @@ import { Route as EnRouteImport } from './routes/en'
 import { Route as EsRouteImport } from './routes/es'
 import { Route as FrRouteImport } from './routes/fr'
 import { Route as EsIndexRouteImport } from './routes/es.index'
+import { Route as EsContactoRouteImport } from './routes/es.contacto'
 import { Route as EsNosotrosRouteImport } from './routes/es.nosotros'
 import { Route as EsProcesosYCalidadRouteImport } from './routes/es.procesos-y-calidad'
+import { Route as EsProductosRouteImport } from './routes/es.productos'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -42,6 +44,11 @@ const EsIndexRoute = EsIndexRouteImport.update({
   path: '/',
   getParentRoute: () => EsRoute,
 } as any)
+const EsContactoRoute = EsContactoRouteImport.update({
+  id: '/contacto',
+  path: '/contacto',
+  getParentRoute: () => EsRoute,
+} as any)
 const EsNosotrosRoute = EsNosotrosRouteImport.update({
   id: '/nosotros',
   path: '/nosotros',
@@ -52,22 +59,31 @@ const EsProcesosYCalidadRoute = EsProcesosYCalidadRouteImport.update({
   path: '/procesos-y-calidad',
   getParentRoute: () => EsRoute,
 } as any)
+const EsProductosRoute = EsProductosRouteImport.update({
+  id: '/productos',
+  path: '/productos',
+  getParentRoute: () => EsRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/en': typeof EnRoute
   '/es': typeof EsRouteWithChildren
   '/fr': typeof FrRoute
+  '/es/contacto': typeof EsContactoRoute
   '/es/nosotros': typeof EsNosotrosRoute
   '/es/procesos-y-calidad': typeof EsProcesosYCalidadRoute
+  '/es/productos': typeof EsProductosRoute
   '/es/': typeof EsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/en': typeof EnRoute
   '/fr': typeof FrRoute
+  '/es/contacto': typeof EsContactoRoute
   '/es/nosotros': typeof EsNosotrosRoute
   '/es/procesos-y-calidad': typeof EsProcesosYCalidadRoute
+  '/es/productos': typeof EsProductosRoute
   '/es': typeof EsIndexRoute
 }
 export interface FileRoutesById {
@@ -76,8 +92,10 @@ export interface FileRoutesById {
   '/en': typeof EnRoute
   '/es': typeof EsRouteWithChildren
   '/fr': typeof FrRoute
+  '/es/contacto': typeof EsContactoRoute
   '/es/nosotros': typeof EsNosotrosRoute
   '/es/procesos-y-calidad': typeof EsProcesosYCalidadRoute
+  '/es/productos': typeof EsProductosRoute
   '/es/': typeof EsIndexRoute
 }
 export interface FileRouteTypes {
@@ -87,19 +105,31 @@ export interface FileRouteTypes {
     | '/en'
     | '/es'
     | '/fr'
+    | '/es/contacto'
     | '/es/nosotros'
     | '/es/procesos-y-calidad'
+    | '/es/productos'
     | '/es/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/en' | '/fr' | '/es/nosotros' | '/es/procesos-y-calidad' | '/es'
+  to:
+    | '/'
+    | '/en'
+    | '/fr'
+    | '/es/contacto'
+    | '/es/nosotros'
+    | '/es/procesos-y-calidad'
+    | '/es/productos'
+    | '/es'
   id:
     | '__root__'
     | '/'
     | '/en'
     | '/es'
     | '/fr'
+    | '/es/contacto'
     | '/es/nosotros'
     | '/es/procesos-y-calidad'
+    | '/es/productos'
     | '/es/'
   fileRoutesById: FileRoutesById
 }
@@ -147,6 +177,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EsIndexRouteImport
       parentRoute: typeof EsRoute
     }
+    '/es/contacto': {
+      id: '/es/contacto'
+      path: '/contacto'
+      fullPath: '/es/contacto'
+      preLoaderRoute: typeof EsContactoRouteImport
+      parentRoute: typeof EsRoute
+    }
     '/es/nosotros': {
       id: '/es/nosotros'
       path: '/nosotros'
@@ -161,18 +198,29 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EsProcesosYCalidadRouteImport
       parentRoute: typeof EsRoute
     }
+    '/es/productos': {
+      id: '/es/productos'
+      path: '/productos'
+      fullPath: '/es/productos'
+      preLoaderRoute: typeof EsProductosRouteImport
+      parentRoute: typeof EsRoute
+    }
   }
 }
 
 interface EsRouteChildren {
+  EsContactoRoute: typeof EsContactoRoute
   EsNosotrosRoute: typeof EsNosotrosRoute
   EsProcesosYCalidadRoute: typeof EsProcesosYCalidadRoute
+  EsProductosRoute: typeof EsProductosRoute
   EsIndexRoute: typeof EsIndexRoute
 }
 
 const EsRouteChildren: EsRouteChildren = {
+  EsContactoRoute: EsContactoRoute,
   EsNosotrosRoute: EsNosotrosRoute,
   EsProcesosYCalidadRoute: EsProcesosYCalidadRoute,
+  EsProductosRoute: EsProductosRoute,
   EsIndexRoute: EsIndexRoute,
 }
 

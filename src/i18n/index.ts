@@ -17,4 +17,5 @@ export function getDict(locale: Locale = "es"): Dict {
 }
 
 export { es };
+export { company } from "./es";
 export type { Dict };

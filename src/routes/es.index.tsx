@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Anchor, Factory, Snowflake, Ship, Check, ArrowRight } from "lucide-react";
 import { es } from "@/i18n";
-import { products } from "@/data/products";
+import { products, featuredIds, productImage, categoryLabels } from "@/data/products";
 import { T } from "@/components/site/Pending";
 import { Reveal } from "@/components/site/Reveal";
 import { Section, SectionHeading } from "@/components/site/Section";
@@ -9,9 +9,9 @@ import { ProvisionalPhoto } from "@/components/site/ProvisionalPhoto";
 import heroMar from "@/assets/hero-mar.jpg";
 import planta from "@/assets/planta.jpg";
 
-const title = "Exportadora de pescado congelado en Venezuela | Punta de Piedra";
+const title = "Exportadora de pescado congelado en Venezuela | Punta de Piedras";
 const description =
-  "Procesamos, congelamos y exportamos pescados y mariscos desde Punta de Piedra, Venezuela, a importadores de Guadalupe y Martinica. Solicite su cotización.";
+  "Más de 18 años trabajando con pescado. Procesamos, congelamos y exportamos 15 especies de pescados y mariscos desde Punta de Piedras, Venezuela, a Guadalupe y Martinica.";
 
 export const Route = createFileRoute("/es/")({
   head: () => ({
@@ -29,7 +29,7 @@ export const Route = createFileRoute("/es/")({
 const processIcons = [Anchor, Factory, Snowflake, Ship];
 
 function HomePage() {
-  const featured = products.slice(0, 4);
+  const featured = featuredIds.map((id) => products.find((p) => p.id === id)!).filter(Boolean);
 
   return (
     <>
@@ -50,7 +50,7 @@ function HomePage() {
         <div className="container-site pb-40 pt-24 text-primary-foreground md:pb-48">
           <Reveal>
             <p className="text-xs font-semibold uppercase tracking-[0.22em] text-ice">
-              Punta de Piedra · Venezuela
+              {es.home.eyebrow}
             </p>
             <h1 className="mt-5 max-w-3xl font-display text-4xl font-extrabold leading-tight md:text-6xl">
               {es.home.heroTitle}
@@ -102,15 +102,35 @@ function HomePage() {
             <Reveal key={p.id} delay={i * 80}>
               <Link
                 to="/es/productos"
-                className="group flex h-full flex-col rounded-2xl border border-border bg-card p-6 shadow-soft transition-all hover:-translate-y-1 hover:shadow-card"
+                hash={p.id}
+                className="group flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-soft transition-all hover:-translate-y-1 hover:shadow-card"
               >
-                <Snowflake className="size-7 text-ice" />
-                <h3 className="mt-4 font-display text-lg font-bold text-primary">{p.name}</h3>
-                <p className="text-xs italic text-muted-foreground">{p.scientific}</p>
-                <p className="mt-3 text-sm text-muted-foreground">{p.presentation.join(" · ")}</p>
-                <span className="mt-auto pt-5 text-sm font-semibold text-accent">
-                  Ver ficha técnica →
-                </span>
+                <div className="aspect-4/3 border-b border-border bg-white">
+                  <img
+                    src={productImage(p.id)}
+                    alt={`${p.name} (${p.english})`}
+                    loading="lazy"
+                    className="h-full w-full object-contain p-3"
+                  />
+                </div>
+                <div className="flex flex-1 flex-col p-5">
+                  <span className="w-fit rounded-full bg-ice/40 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-primary">
+                    {categoryLabels[p.category]}
+                  </span>
+                  <h3 className="mt-3 font-display text-lg font-bold text-primary">{p.name}</h3>
+                  <p className="text-xs italic text-muted-foreground">
+                    {p.english} · {p.scientific}
+                  </p>
+                  <p className="mt-3 text-sm text-muted-foreground">{p.tags.join(" · ")}</p>
+                  {p.seasonShort && (
+                    <p className="mt-1 text-xs font-semibold text-accent">
+                      {es.products.season}: {p.seasonShort}
+                    </p>
+                  )}
+                  <span className="mt-auto pt-4 text-sm font-semibold text-accent">
+                    {es.products.seeSheet} →
+                  </span>
+                </div>
               </Link>
             </Reveal>
           ))}

@@ -9,9 +9,9 @@ import planta from "@/assets/planta.jpg";
 import empacado from "@/assets/producto-empacado.jpg";
 import equipo from "@/assets/equipo.jpg";
 
-const title = "Nosotros | Procesadora y Congeladora Punta de Piedra";
+const title = "Nosotros | Congeladora y Procesadora Punta de Piedras";
 const description =
-  "Empresa venezolana de procesamiento y congelación de pescados y mariscos, con exportación a Guadalupe y Martinica.";
+  "Más de 18 años trabajando con pescado y 4 años procesando y congelando para exportar a Guadalupe y Martinica.";
 
 export const Route = createFileRoute("/es/nosotros")({
   head: () => ({
