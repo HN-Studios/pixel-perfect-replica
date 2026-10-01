@@ -33,7 +33,7 @@ function HomePage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative isolate flex min-h-[86vh] items-center">
+      <section className="relative isolate flex flex-col justify-center lg:min-h-[86vh] lg:flex-row lg:items-center">
         <img
           src={heroPlanta}
           alt="Equipo de la planta procesando pargo rojo fresco"
@@ -43,7 +43,7 @@ function HomePage() {
         />
         <div className="absolute inset-0 -z-10 bg-gradient-to-r from-primary/95 via-primary/80 to-primary/45" />
 
-        <div className="container-site pb-40 pt-24 text-primary-foreground md:pb-48">
+        <div className="container-site pb-10 pt-16 text-primary-foreground md:pt-24 lg:pb-48">
           <Reveal>
             <p className="text-xs font-semibold uppercase tracking-[0.22em] text-ice">
               {es.home.eyebrow}
@@ -72,12 +72,12 @@ function HomePage() {
         </div>
 
         {/* Franja de datos clave */}
-        <div className="absolute bottom-0 left-0 right-0 translate-y-1/2 px-5">
+        <div className="relative z-10 pb-10 lg:absolute lg:bottom-0 lg:left-0 lg:right-0 lg:translate-y-1/2 lg:px-5 lg:pb-0">
           <div className="container-site">
-            <div className="grid gap-px overflow-hidden rounded-2xl bg-border shadow-card sm:grid-cols-2 lg:grid-cols-4">
+            <div className="grid grid-cols-2 gap-px overflow-hidden rounded-2xl bg-border shadow-card lg:grid-cols-4">
               {es.home.facts.map((f) => (
-                <div key={f.label} className="bg-card px-6 py-6 text-center">
-                  <p className="font-display text-xl font-bold text-primary">
+                <div key={f.label} className="bg-card px-3 py-5 text-center sm:px-6 sm:py-6">
+                  <p className="font-display text-base font-bold leading-tight text-primary sm:text-xl">
                     <T>{f.value}</T>
                   </p>
                   <p className="mt-1 text-xs uppercase tracking-wide text-muted-foreground">
@@ -91,7 +91,7 @@ function HomePage() {
       </section>
 
       {/* Productos destacados */}
-      <Section className="pt-36 md:pt-44">
+      <Section className="lg:pt-44">
         <SectionHeading title={es.home.featuredTitle} subtitle={es.home.featuredSubtitle} />
         <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {featured.map((p, i) => (
