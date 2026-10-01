@@ -110,8 +110,8 @@ export const products: Product[] = [
   {
     id: "conoro",
     name: "Conoro",
-    english: "Atlantic rubyfish",
-    scientific: "Erythrocles monodi",
+    english: "Atlantic bigeye",
+    scientific: "Priacanthus arenatus",
     category: "pescados",
     fishing: "Cordel",
     season: ALL_YEAR,
@@ -193,22 +193,6 @@ export const products: Product[] = [
       { label: "Rueda", value: "desde 160 g" },
     ],
     tags: ["Filete", "Rueda"],
-  },
-  {
-    id: "mero",
-    name: "Mero",
-    english: "Grouper",
-    scientific: "Mycteroperca venenosa",
-    category: "pescados",
-    fishing: "Cordel",
-    season: ALL_YEAR,
-    products: [FILLET],
-    presentation: [IWP_10],
-    sizes: [
-      { label: "Entero", value: "200–800 g" },
-      { label: "Filete", value: "120–220 g" },
-    ],
-    tags: ["Filete"],
   },
   {
     id: "pez-leon",

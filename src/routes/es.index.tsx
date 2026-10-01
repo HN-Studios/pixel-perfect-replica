@@ -10,7 +10,7 @@ import plantaProceso from "@/assets/planta-proceso.jpg";
 
 const title = "Exportadora de pescado congelado en Venezuela | Punta de Piedras";
 const description =
-  "Más de 18 años trabajando con pescado. Procesamos, congelamos y exportamos 15 especies de pescados y mariscos desde Punta de Piedras, Venezuela, a Guadalupe y Martinica.";
+  "Más de 18 años trabajando con pescado. Procesamos, congelamos y exportamos 14 especies de pescados y mariscos desde Punta de Piedras, Venezuela, a Guadalupe y Martinica.";
 
 export const Route = createFileRoute("/es/")({
   head: () => ({

@@ -16,7 +16,7 @@ import { cn } from "@/lib/utils";
 
 const title = "Productos | Pescado y mariscos congelados de Venezuela";
 const description =
-  "Pargos, dorado, carite, sierra, mero, pez león, langosta, pulpo y más: 15 especies congeladas con ficha técnica, tallas y presentaciones.";
+  "Pargos, dorado, carite, sierra, pez león, langosta, pulpo y más: 14 especies congeladas con ficha técnica, tallas y presentaciones.";
 
 export const Route = createFileRoute("/es/productos")({
   head: () => ({
