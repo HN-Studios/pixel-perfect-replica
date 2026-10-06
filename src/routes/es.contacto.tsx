@@ -1,6 +1,6 @@
 import { useState, type FormEvent } from "react";
 import { createFileRoute } from "@tanstack/react-router";
-import { Mail, Phone, MessageCircle, MapPin, Clock, CheckCircle2 } from "lucide-react";
+import { Mail, Phone, MessageCircle, MapPin, CheckCircle2 } from "lucide-react";
 import { es, company } from "@/i18n";
 import { products } from "@/data/products";
 import { T } from "@/components/site/Pending";
@@ -27,7 +27,7 @@ export const Route = createFileRoute("/es/contacto")({
   component: ContactPage,
 });
 
-const icons = [Mail, Phone, MessageCircle, MapPin, Clock];
+const icons = [Mail, Phone, MessageCircle, MapPin];
 const field =
   "w-full rounded-xl border border-border bg-background px-4 py-3 text-sm text-foreground outline-none transition focus:border-primary focus:ring-2 focus:ring-ice/60";
 const label = "mb-1.5 block text-sm font-semibold text-primary";

@@ -245,7 +245,6 @@ export const es = {
       { label: "Teléfono", value: company.phone, href: company.phoneHref },
       { label: "WhatsApp", value: company.whatsapp, href: company.whatsappHref },
       { label: "Dirección", value: `${company.place} [dirección completa por confirmar]` },
-      { label: "Horario", value: "[por confirmar]" },
     ],
     mapTitle: "Ubicación",
   },
