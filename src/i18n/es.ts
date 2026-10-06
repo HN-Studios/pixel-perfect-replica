@@ -22,7 +22,6 @@ export const es = {
     name: "PUNTA DE PIEDRAS",
     tagline: "Congeladora y Procesadora",
   },
-  topbar: "Versión de prueba · algunas fotos y datos siguen siendo provisionales",
   nav: {
     home: "Inicio",
     about: "Nosotros",
