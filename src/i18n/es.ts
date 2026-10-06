@@ -243,7 +243,7 @@ export const es = {
       { label: "Correo", value: company.email, href: `mailto:${company.email}` },
       { label: "Teléfono", value: company.phone, href: company.phoneHref },
       { label: "WhatsApp", value: company.whatsapp, href: company.whatsappHref },
-      { label: "Dirección", value: `${company.place} [dirección completa por confirmar]` },
+      { label: "Dirección", value: company.place },
     ],
     mapTitle: "Ubicación",
   },
